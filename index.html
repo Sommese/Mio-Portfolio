@@ -133,6 +133,8 @@
             align-items: center;
             justify-content: center;
             font-size: 1rem;
+            cursor: pointer;
+            border: none;
         }
 
         .btn-primary {
@@ -235,7 +237,7 @@
             line-height: 1.8;
         }
 
-        /* --- Esperienze Grid (I 9 Quadri Originali) --- */
+        /* --- Esperienze Grid --- */
         .experience {
             padding: 100px 0;
         }
@@ -398,6 +400,27 @@
 
         .footer-links a:hover { color: var(--primary-red); }
 
+        /* Stile per il messaggio di conferma copia */
+        #email-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #111827;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 9999;
+            transition: var(--transition);
+            box-shadow: var(--shadow-lg);
+        }
+
+        #email-toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
         /* Responsive */
         @media (max-width: 968px) {
             .hero, .about-grid { grid-template-columns: 1fr; text-align: center; }
@@ -422,7 +445,8 @@
             <div class="nav-links">
                 <a href="#about">Percorso</a>
                 <a href="#esperienze">Esperienze</a>
-                <a href="#contatti" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Parliamo</a>
+                <!-- Pulsante Email in alto -->
+                <button onclick="copyEmail()" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Contatti</button>
             </div>
         </div>
     </nav>
@@ -443,7 +467,7 @@
         </div>
         <div class="hero-image-container">
             <div class="profile-placeholder">
-                <img src="tua-foto.jpg" alt="Karol Sommese" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="tua-foto.jpeg" alt="Karol Sommese" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="width: 100%; height: 100%; object-fit: cover;">
                 <div style="display:none; text-align:center;">
                     <span style="font-size: 3rem;">👤</span><br>
                     [Foto di Karol]
@@ -452,7 +476,7 @@
         </div>
     </header>
 
-    <!-- About Stats -->
+    <!-- About Section -->
     <section id="about" class="about-detailed">
         <div class="container about-grid">
             <div class="about-stats">
@@ -480,7 +504,7 @@
         </div>
     </section>
 
-    <!-- La Mia Storia -->
+    <!-- Story Section -->
     <section class="story-section">
         <div class="container">
             <div class="story-content">
@@ -494,69 +518,60 @@
         </div>
     </section>
 
-    <!-- Muro di Esperienze (TUTTI I 9 QUADRI ORIGINALI) -->
+    <!-- Esperienze Section -->
     <section id="esperienze" class="experience container">
         <span class="section-label">Il mio percorso operativo</span>
         <h2 style="font-size: 2.5rem; margin-bottom: 50px;">Esperienze che lasciano il segno</h2>
         
         <div class="experience-grid">
-            <!-- 1 -->
             <div class="exp-card">
                 <span class="exp-tag">Hospitality</span>
                 <h3>Mountain Resort</h3>
                 <p class="exp-role">Aiuto Sous-Chef</p>
                 <p>In cucina ho imparato la resilienza. Gestire gli ordini in tempi record e mantenere standard altissimi sotto stress.</p>
             </div>
-            <!-- 2 -->
             <div class="exp-card">
                 <span class="exp-tag">Soccorso</span>
                 <h3>Croce Rossa Italiana</h3>
                 <p class="exp-role">Volontario Attivo</p>
                 <p>Gestione delle emergenze e primo soccorso. Responsabilità civile e sangue freddo in ogni situazione.</p>
             </div>
-            <!-- 3 -->
             <div class="exp-card">
                 <span class="exp-tag">Academy</span>
                 <h3>UniBZ MobileDev</h3>
                 <p class="exp-role">Laboratorio Universitario</p>
                 <p>Sviluppo di app mobile presso Bolzano. La mia passione tech che diventa competenza tecnica.</p>
             </div>
-            <!-- 4 -->
             <div class="exp-card">
                 <span class="exp-tag">Family Business</span>
                 <h3>Hotel Management</h3>
                 <p class="exp-role">Supporto Operativo</p>
                 <p>Esperienza precoce nell'azienda di famiglia. Gestione clienti, logistica e problem solving quotidiano.</p>
             </div>
-            <!-- 5 -->
             <div class="exp-card">
                 <span class="exp-tag">Sport</span>
                 <h3>Basket Agonistico</h3>
                 <p class="exp-role">Atleta (7 Anni)</p>
                 <p>Lo sport mi ha insegnato la disciplina, il sacrificio e l'importanza fondamentale del gioco di squadra.</p>
             </div>
-            <!-- 6 -->
             <div class="exp-card">
                 <span class="exp-tag">Istruzione</span>
                 <h3>I.I.S. Galilei</h3>
                 <p class="exp-role">Studente Telecomunicazioni</p>
                 <p>Infrastrutture di comunicazione ed elettronica applicata. Una base tecnica concreta per gestire sistemi complessi.</p>
             </div>
-            <!-- 7 -->
             <div class="exp-card">
                 <span class="exp-tag">Entertainment</span>
                 <h3>Animatore</h3>
                 <p class="exp-role">Gestione Gruppi</p>
                 <p>Public speaking e capacità di coinvolgere le persone. L'animazione mi ha insegnato l'empatia e la leadership.</p>
             </div>
-            <!-- 8 -->
             <div class="exp-card">
                 <span class="exp-tag">Innovation</span>
                 <h3>AI Mastery</h3>
                 <p class="exp-role">Prompt Engineering</p>
                 <p>Uso avanzato di GPT per generare soluzioni, codice e automazioni. L'efficacia dell'IA al servizio dei progetti.</p>
             </div>
-            <!-- 9 -->
             <div class="exp-card">
                 <span class="exp-tag">Personal</span>
                 <h3>Sviluppo Continuo</h3>
@@ -601,7 +616,7 @@
         </div>
     </section>
 
-    <!-- Skills -->
+    <!-- Skills Section -->
     <section class="skills-section container">
         <div class="about-grid" style="align-items: flex-start;">
             <div>
@@ -642,15 +657,16 @@
             <span class="section-label">Hai un progetto in mente?</span>
             <h2>Creiamo qualcosa di<span> Straordinario.</span></h2>
             <p style="max-width: 600px; margin: 0 auto 48px; color: var(--text-muted);">
-                Sono sempre alla ricerca di nuove sfide. Che si tratti di tecnologia o di hospitality, porto con me lo stesso livello di dedizione.
+                Sono sempre alla ricerca di nuove sfide. Clicca sul pulsante qui sotto per copiarmi l'email.
             </p>
             
-            <a href="mailto:sommesekarol@gmail.com" class="btn btn-primary">Mandami un'email</a>
+            <!-- Pulsante che apre mailto e contemporaneamente COPIA l'email -->
+            <button onclick="copyEmail()" class="btn btn-primary">Copia & Scrivi Email</button>
             
             <div class="footer-links">
                 <a href="https://wa.me/393477471313" target="_blank" style="color: #25D366;">WhatsApp</a>
                 <a href="https://www.instagram.com/s0mmese?igsh=MWQwcmF1cXFidXpqMg==" target="_blank">Instagram</a>
-                <a href="#">GitHub</a>
+                <a href="https://github.com/sommesekarol" target="_blank">GitHub</a>
             </div>
             
             <p style="margin-top: 80px; font-size: 0.8rem; opacity: 0.4;">
@@ -658,6 +674,35 @@
             </p>
         </div>
     </footer>
+
+    <!-- Notifica Copia -->
+    <div id="email-toast">Email copiata negli appunti! 📋</div>
+
+    <script>
+        function copyEmail() {
+            const email = "sommesekarol@gmail.com";
+            
+            // 1. Tenta di aprire l'app mail (se configurata)
+            window.location.href = "mailto:" + email;
+            
+            // 2. Copia negli appunti (per chi non ha l'app mail configurata)
+            const el = document.createElement('textarea');
+            el.value = email;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            
+            // 3. Mostra la notifica visiva
+            const toast = document.getElementById("email-toast");
+            toast.classList.add("show");
+            
+            // 4. Nascondi la notifica dopo 3 secondi
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 3000);
+        }
+    </script>
  
 </body>
 </html>
