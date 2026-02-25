@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio di Karol Sommese - Studente di Informatica, Operatore Hospitality e Volontario Croce Rossa Italiana.">
+    <title>Karol Sommese | Portfolio & CV Online</title>
+    
+    <!-- Font di alta qualità -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #E31B23; 
+            --dark-red: #A81419;
+            --pure-white: #FFFFFF;
+            --soft-gray: #F9FAFB;
+            --text-main: #111827;
+            --text-muted: #4B5563;
+            --accent-soft: rgba(227, 27, 35, 0.05);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--pure-white);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .nav-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- Navigazione --- */
+        nav {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-logo span { color: var(--primary-red); }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            margin-right: 25px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--primary-red); }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 100px 0 80px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            letter-spacing: -2px;
+        }
+
+        .hero-content h1 span { color: var(--primary-red); }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            border-left: 4px solid var(--primary-red);
+            padding-left: 24px;
+            max-width: 600px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-red);
+            color: white;
+            box-shadow: 0 10px 20px rgba(227, 27, 35, 0.15);
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(227, 27, 35, 0.25);
+        }
+
+        .btn-outline {
+            border: 2px solid #E5E7EB;
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-red);
+            color: var(--primary-red);
+            background: var(--accent-soft);
+        }
+
+        .hero-image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-placeholder {
+            width: 100%;
+            max-width: 380px;
+            aspect-ratio: 4/5;
+            background: #F3F4F6;
+            border-radius: 32px;
+            overflow: hidden;
+            border-bottom: 8px solid var(--primary-red);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+        }
+
+        /* --- Sezione Profilo --- */
+        .about-detailed {
+            padding: 120px 0;
+            background: linear-gradient(180deg, var(--soft-gray) 0%, #FFFFFF 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.7fr 1.3fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .section-label {
+            color: var(--primary-red);
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .highlight-box {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            border-left: 6px solid var(--primary-red);
+            box-shadow: var(--shadow-sm);
+            margin-top: 30px;
+        }
+
+        /* --- Story Section --- */
+        .story-section {
+            padding: 100px 0;
+        }
+        
+        .story-content {
+            max-width: 850px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .story-text {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* --- Esperienze Grid (I 9 Quadri Originali) --- */
+        .experience {
+            padding: 100px 0;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .exp-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #F3F4F6;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .exp-card:hover {
+            border-color: var(--primary-red);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        }
+
+        .exp-tag {
+            background: var(--accent-soft);
+            color: var(--primary-red);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .exp-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+
+        .exp-role {
+            color: var(--primary-red);
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        /* --- Certificazioni --- */
+        .cert-vault {
+            padding: 100px 0;
+            background: #0F172A;
+            color: white;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .cert-item {
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 32px;
+            text-align: center;
+            border-radius: 20px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .cert-item:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--primary-red);
+        }
+
+        .cert-info {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(0px);
+            background: white;
+            color: var(--text-main);
+            padding: 16px;
+            border-radius: 12px;
+            width: 240px;
+            font-size: 0.85rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 100;
+            text-align: left;
+        }
+
+        .cert-item:hover .cert-info {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-15px);
+        }
+
+        .cert-icon { font-size: 2.5rem; margin-bottom: 16px; display: block; }
+
+        /* --- Skills Section --- */
+        .skills-section {
+            padding: 120px 0;
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #F3F4F6;
+            display: flex;
+            align-items: center;
+            transition: 0.2s;
+        }
+
+        .skills-list li:before {
+            content: "→";
+            color: var(--primary-red);
+            margin-right: 12px;
+            font-weight: bold;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 120px 0 60px;
+            text-align: center;
+            background: var(--soft-gray);
+        }
+
+        .cta-footer h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .cta-footer h2 span { color: var(--primary-red); }
+
+        .footer-links {
+            margin-top: 48px;
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--primary-red); }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero, .about-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-subtitle { border-left: none; padding-left: 0; margin: 0 auto 40px; }
+            .btn-group { justify-content: center; }
+            .about-stats { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; }
+            .cert-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 640px) {
+            .cert-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .experience-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="#" class="nav-logo">KAROL<span>SOMMESE</span></a>
+            <div class="nav-links">
+                <a href="#about">Percorso</a>
+                <a href="#esperienze">Esperienze</a>
+                <a href="#contatti" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Parliamo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero container">
+        <div class="hero-content">
+            <span class="section-label">Disponibile per nuove opportunità</span>
+            <h1>Pragmatismo.<br><span>Innovazione.</span><br>Azione.</h1>
+            <p class="hero-subtitle">
+                Studente di Informatica presso I.I.S. Galilei. <br>
+                Operatore Hospitality & Volontario Croce Rossa Italiana.
+            </p>
+            <div class="btn-group">
+                <a href="Il_Mio_CV.pdf" target="_blank" class="btn btn-primary">Scarica CV Completo</a>
+                <a href="#about" class="btn btn-outline">Scopri il mio profilo</a>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <div class="profile-placeholder">
+                <img src="tua-foto.jpg" alt="Karol Sommese" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="display:none; text-align:center;">
+                    <span style="font-size: 3rem;">👤</span><br>
+                    [Foto di Karol]
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Stats -->
+    <section id="about" class="about-detailed">
+        <div class="container about-grid">
+            <div class="about-stats">
+                <div style="margin-bottom: 40px;">
+                    <h3 style="font-size: 4rem; color: var(--primary-red); font-weight: 800; line-height: 1;">16</h3>
+                    <p style="font-weight: 700; text-transform: uppercase; color: var(--text-muted); font-size: 0.8rem;">Anni di determinazione</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 4rem; color: var(--primary-red); font-weight: 800; line-height: 1;">100%</h3>
+                    <p style="font-weight: 700; text-transform: uppercase; color: var(--text-muted); font-size: 0.8rem;">Smart Work</p>
+                </div>
+            </div>
+            <div class="about-text">
+                <span class="section-label">Chi sono veramente</span>
+                <h2>Se non so fare una cosa, la studio finché non la padroneggio.</h2>
+                <p>
+                    Oltre il codice, c'è la strategia. Ho imparato a guardare i problemi non come ostacoli, ma come un'opportunità. Che sia ottimizzare un processo in cucina o scrivere uno script per automatizzare il lavoro, il mio obiettivo è l'efficienza assoluta.
+                </p>
+                <div class="highlight-box">
+                    <p style="margin-bottom: 0; color: var(--text-main); font-weight: 600;">
+                        "La mia forza è la capacità di comunicare concetti complessi in modo semplice e di agire tempestivamente dove altri esitano."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- La Mia Storia -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-content">
+                <span class="section-label">Il Mio Racconto</span>
+                <h2 style="font-size: 2.5rem; margin-bottom: 32px;">Dall'intrattenimento al Digital.</h2>
+                <p class="story-text">
+                    L'animazione mi ha insegnato il marketing umano: capire cosa vuole la gente prima ancora che lo chieda. Il lavoro nell'azienda di famiglia mi ha dato il senso del business. <br><br>
+                    Oggi porto queste "soft skills" nel mondo digitale. Uso l'IA non solo per generare righe di codice, ma per analizzare mercati, scrivere contenuti che convertono e trovare falle logiche nei sistemi. Non mi fermo alla superficie; scavo fino a trovare la soluzione più rapida ed efficace.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Muro di Esperienze (TUTTI I 9 QUADRI ORIGINALI) -->
+    <section id="esperienze" class="experience container">
+        <span class="section-label">Il mio percorso operativo</span>
+        <h2 style="font-size: 2.5rem; margin-bottom: 50px;">Esperienze che lasciano il segno</h2>
+        
+        <div class="experience-grid">
+            <!-- 1 -->
+            <div class="exp-card">
+                <span class="exp-tag">Hospitality</span>
+                <h3>Mountain Resort</h3>
+                <p class="exp-role">Aiuto Sous-Chef</p>
+                <p>In cucina ho imparato la resilienza. Gestire gli ordini in tempi record e mantenere standard altissimi sotto stress.</p>
+            </div>
+            <!-- 2 -->
+            <div class="exp-card">
+                <span class="exp-tag">Soccorso</span>
+                <h3>Croce Rossa Italiana</h3>
+                <p class="exp-role">Volontario Attivo</p>
+                <p>Gestione delle emergenze e primo soccorso. Responsabilità civile e sangue freddo in ogni situazione.</p>
+            </div>
+            <!-- 3 -->
+            <div class="exp-card">
+                <span class="exp-tag">Academy</span>
+                <h3>UniBZ MobileDev</h3>
+                <p class="exp-role">Laboratorio Universitario</p>
+                <p>Sviluppo di app mobile presso Bolzano. La mia passione tech che diventa competenza tecnica.</p>
+            </div>
+            <!-- 4 -->
+            <div class="exp-card">
+                <span class="exp-tag">Family Business</span>
+                <h3>Hotel Management</h3>
+                <p class="exp-role">Supporto Operativo</p>
+                <p>Esperienza precoce nell'azienda di famiglia. Gestione clienti, logistica e problem solving quotidiano.</p>
+            </div>
+            <!-- 5 -->
+            <div class="exp-card">
+                <span class="exp-tag">Sport</span>
+                <h3>Basket Agonistico</h3>
+                <p class="exp-role">Atleta (7 Anni)</p>
+                <p>Lo sport mi ha insegnato la disciplina, il sacrificio e l'importanza fondamentale del gioco di squadra.</p>
+            </div>
+            <!-- 6 -->
+            <div class="exp-card">
+                <span class="exp-tag">Istruzione</span>
+                <h3>I.I.S. Galilei</h3>
+                <p class="exp-role">Studente Telecomunicazioni</p>
+                <p>Infrastrutture di comunicazione ed elettronica applicata. Una base tecnica concreta per gestire sistemi complessi.</p>
+            </div>
+            <!-- 7 -->
+            <div class="exp-card">
+                <span class="exp-tag">Entertainment</span>
+                <h3>Animatore</h3>
+                <p class="exp-role">Gestione Gruppi</p>
+                <p>Public speaking e capacità di coinvolgere le persone. L'animazione mi ha insegnato l'empatia e la leadership.</p>
+            </div>
+            <!-- 8 -->
+            <div class="exp-card">
+                <span class="exp-tag">Innovation</span>
+                <h3>AI Mastery</h3>
+                <p class="exp-role">Prompt Engineering</p>
+                <p>Uso avanzato di GPT per generare soluzioni, codice e automazioni. L'efficacia dell'IA al servizio dei progetti.</p>
+            </div>
+            <!-- 9 -->
+            <div class="exp-card">
+                <span class="exp-tag">Personal</span>
+                <h3>Sviluppo Continuo</h3>
+                <p class="exp-role">Formazione Attiva</p>
+                <p>Arricchisco costantemente competenze tecniche e relazionali, migliorando adattabilità e gestione del tempo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificazioni -->
+    <section class="cert-vault">
+        <div class="container">
+            <span class="section-label" style="color: rgba(255,255,255,0.6);">Portfolio Certificazioni</span>
+            <h2 style="font-size: 2.5rem; margin-bottom: 50px;">Le mie garanzie (Passa il mouse)</h2>
+            
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <div class="cert-info"><b>Dettagli:</b> Abilitazione all'uso del defibrillatore e manovre di rianimazione cardiopolmonare (adulto/pediatrico).</div>
+                    <span class="cert-icon">🛡️</span>
+                    <h4>BLSD / eBLSDS</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.6;">Soccorso Vitale</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-info"><b>Dettagli:</b> Corso specifico sulla sicurezza negli ambienti di lavoro.</div>
+                    <span class="cert-icon">⚠️</span>
+                    <h4>Sicurezza</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.6;">Rischio Calcolato</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-info"><b>Dettagli:</b> Uso efficace di PC, strumenti digitali e basi di logica di programmazione.</div>
+                    <span class="cert-icon">💻</span>
+                    <h4>Tech Master</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.6;">Codice & Logica</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-info"><b>Dettagli:</b> Competenza linguistica certificata. Attualmente in preparazione per il livello superiore C1.</div>
+                    <span class="cert-icon">🌍</span>
+                    <h4>English B2</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.6;">Livello Avanzato</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills-section container">
+        <div class="about-grid" style="align-items: flex-start;">
+            <div>
+                <span class="section-label">Skills & Expertise</span>
+                <h2 style="font-size: 2.8rem;">Competenze Bilanciate.</h2>
+                <p style="margin-top: 15px; color: var(--text-muted); font-weight: 500; font-style: italic; border-left: 3px solid var(--primary-red); padding-left: 15px;">
+                    "In un mondo che corre, non mi basta arrivare: mi assicuro di aver costruito la strada più efficace."
+                </p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;">
+                <div>
+                    <h4 style="color: var(--primary-red); margin-bottom: 24px;">Hard Skills</h4>
+                    <ul class="skills-list">
+                        <li>Ottima Conoscenza di AI (GPT, Prompting)</li>
+                        <li>Gestione e ottimizzazione PC Windows</li>
+                        <li>Lettura e modifica codice</li>
+                        <li>Manutenzione hardware di base</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: var(--primary-red); margin-bottom: 24px;">Soft Skills</h4>
+                    <ul class="skills-list">
+                        <li>Public Speaking & Socialità</li>
+                        <li>Leadership & Gestione Team</li>
+                        <li>Problem Solving Istantaneo</li>
+                        <li>Rapidità di Apprendimento</li>
+                        <li>Autodisciplina & Tempo</li>
+                        <li>Empatia & Supporto</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contatti">
+        <div class="container cta-footer">
+            <span class="section-label">Hai un progetto in mente?</span>
+            <h2>Creiamo qualcosa di<span> Straordinario.</span></h2>
+            <p style="max-width: 600px; margin: 0 auto 48px; color: var(--text-muted);">
+                Sono sempre alla ricerca di nuove sfide. Che si tratti di tecnologia o di hospitality, porto con me lo stesso livello di dedizione.
+            </p>
+            
+            <a href="mailto:sommesekarol@gmail.com" class="btn btn-primary">Mandami un'email</a>
+            
+            <div class="footer-links">
+                <a href="https://wa.me/393477471313" target="_blank" style="color: #25D366;">WhatsApp</a>
+                <a href="https://www.instagram.com/s0mmese?igsh=MWQwcmF1cXFidXpqMg==" target="_blank">Instagram</a>
+                <a href="#">GitHub</a>
+            </div>
+            
+            <p style="margin-top: 80px; font-size: 0.8rem; opacity: 0.4;">
+                © 2026 Karol Sommese. Tutti i diritti riservati.
+            </p>
+        </div>
+    </footer>
+ 
+</body>
+</html>
